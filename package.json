@@ -1,0 +1,21 @@
+{
+  "name": "mubo-backend",
+  "version": "0.0.1",
+  "description": "{insert name here}",
+  "scripts": {
+    "deploy": "serverless deploy"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.5.4",
+    "mongodb": "^3.7.3",
+    "mongoose": "^6.0.14",
+    "randomstring": "^1.2.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.41"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.11",
+    "serverless-dotenv-plugin": "^3.10.0",
+    "serverless-offline": "^8.3.1"
+  }
+}

@@ -1,0 +1,26 @@
+org: tavsec
+app: mubo-backend
+service: mubo-backend
+
+frameworkVersion: '2'
+
+useDotenv: true
+
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: '20201221'
+  region: 'eu-central-1'
+
+functions:
+  createEntry:
+    handler: handlers/createEntry.handler
+    events:
+      - http:
+          path: /create-url
+          method: post
+
+plugins:
+  - serverless-offline 
+  - serverless-dotenv-plugin
