@@ -9,7 +9,7 @@ const createEntry = async (event, context) => {
     const url = JSON.parse(event.body).url;
     const urlEntry = await UrlEntry.create({
         url,
-        code: randomstring.generate(7),
+        code:  randomstring.generate(7).toLowerCase(),
         createdAt: new Date()
     })
     return {

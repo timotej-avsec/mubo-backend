@@ -20,6 +20,18 @@ functions:
       - http:
           path: /create-url
           method: post
+  redirect:
+    handler: handlers/redirect.handler
+    events:
+      - http:
+          path: /{urlCode}
+          method: get
+  root:
+    handler: handlers/redirect.handler
+    events:
+      - http:
+          path: /
+          method: get
 
 plugins:
   - serverless-offline 
