@@ -18,13 +18,13 @@ const redirect = async (event, context) => {
     if(code){
         console.log(code)
 
-        const urlEntry = await UrlEntry.find({code: code.toLowerCase()}).clone();
+        const urlEntry = await UrlEntry.findOne({code: code.toLowerCase()}).clone();
         console.log(urlEntry)
-        if(urlEntry.length){
+        if(urlEntry){
             response = {
                 statusCode: 301,
                 headers: {
-                    Location: urlEntry[0].url,
+                    Location: urlEntry.url,
                 }
             }
         }
