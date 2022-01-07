@@ -1,6 +1,5 @@
 const connectToDatabase = require('../bin/db');
 const UrlEntry = require('../models/UrlEntry');
-var randomstring = require("randomstring");
 
 const redirect = async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false;
@@ -8,7 +7,7 @@ const redirect = async (event, context) => {
     let response = {
         statusCode: 301,
         headers: {
-            Location: 'https://www.mubo.one',
+            Location: process.env.FRONTEND_URL,
         }
     }
 
@@ -16,10 +15,7 @@ const redirect = async (event, context) => {
     const code = event.pathParameters ? event.pathParameters.urlCode : null;
 
     if(code){
-        console.log(code)
-
         const urlEntry = await UrlEntry.findOne({code: code.toLowerCase()}).clone();
-        console.log(urlEntry)
         if(urlEntry){
             response = {
                 statusCode: 301,
