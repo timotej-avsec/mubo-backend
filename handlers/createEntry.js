@@ -13,6 +13,11 @@ const createEntry = async (event, context) => {
     if(validation.fails()){
         return {
             statusCode: 422,
+            	
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
+            },
             body: JSON.stringify({
                 errors: validation.errors.get("url")
             })
@@ -26,7 +31,11 @@ const createEntry = async (event, context) => {
         code: randomstring.generate(7).toLowerCase(),
         createdAt: new Date()
     })
-    return {
+    return {	
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
+        },
         statusCode: 200,
         body: JSON.stringify(urlEntry)
       };
